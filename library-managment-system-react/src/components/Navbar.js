@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Navbar = () => {
+const Navbar = ({onLogout}) => {
+const navigate = useNavigate();
+const handleLogout = () =>{
+    onLogout();
+    navigate('/');
+}
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -32,6 +37,10 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/categories">Categories</Link>
                         </li>
+                        <div>
+                            <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
+                        </div>
+
                     </ul>
                 </div>
             </div>
